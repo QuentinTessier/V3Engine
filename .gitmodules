@@ -1,0 +1,6 @@
+[submodule "extern/sx"]
+	path = extern/sx
+	url = git@github.com:septag/sx.git
+[submodule "extern/imgui"]
+	path = extern/imgui
+	url = git@github.com:ocornut/imgui.git
