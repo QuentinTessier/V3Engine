@@ -1,2 +1,4 @@
 # V3Engine
-Rendering engine based only on volumetric data.
+
+This project is a experience around vulkan and volumetric data.
+Our goal here is to learn.
