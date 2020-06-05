@@ -27,9 +27,14 @@ int XCBWindow_create(XCBWindow *self, char const *name, unsigned int width, unsi
 
     self->win = xcb_generate_id(self->connect);
     valueList[0] = self->screen->black_pixel;
-    valueList[1] = XCB_EVENT_MASK_EXPOSURE |
+    valueList[1] = XCB_EVENT_MASK_KEY_PRESS |
+                   XCB_EVENT_MASK_KEY_RELEASE |
                    XCB_EVENT_MASK_BUTTON_PRESS |
-                   XCB_EVENT_MASK_KEY_PRESS;
+                   XCB_EVENT_MASK_BUTTON_RELEASE |
+                   XCB_EVENT_MASK_POINTER_MOTION |
+                   XCB_EVENT_MASK_BUTTON_MOTION |
+                   XCB_EVENT_MASK_STRUCTURE_NOTIFY |
+                   XCB_EVENT_MASK_FOCUS_CHANGE;
     xcb_create_window(
         self->connect,
         XCB_COPY_FROM_PARENT,

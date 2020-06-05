@@ -14,6 +14,9 @@ int main(int ac, char * const *av)
         if (e.type != V3EVENT_NONE) {
             if (e.type == V3EVENT_CLOSE)
                 V3Window_close(win);
+            else if (e.type == V3EVENT_MOUSE_MOVE) {
+                printf("%u %u\n", e.vec[0], e.vec[1]);
+            }
         }
     }
 
