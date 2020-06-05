@@ -2,14 +2,15 @@
 ** EPITECH PROJECT, 2020
 ** V3Engine
 ** File description:
-** window_linux
+** xcb
 */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "window.h"
+#include "V3xcb.h"
 
-int Screen_WindowLinux_Create(WindowLinux *self, char const *name, int width, int height)
+int XCBWindow_create(XCBWindow *self, char const *name, unsigned int width, unsigned int height)
 {
     int screen_nbr = 0;
     uint32_t EventMask = XCB_CW_BACK_PIXEL | XCB_CW_EVENT_MASK;
@@ -57,19 +58,20 @@ int Screen_WindowLinux_Create(WindowLinux *self, char const *name, int width, in
     xcb_intern_atom_reply_t *wmDeleteReply = xcb_intern_atom_reply(self->connect, wmDeleteCookie, 0);
 
     self->wmDeleteWin = wmDeleteReply->atom;
-    self->wmProtocols = wmProtocolsReply->atom;
     xcb_change_property(self->connect, XCB_PROP_MODE_REPLACE, self->win,
         wmProtocolsReply->atom, 4, 32, 1, &wmDeleteReply->atom);
     free(wmDeleteReply);
     free(wmProtocolsReply);
     xcb_map_window(self->connect, self->win);
     xcb_flush(self->connect);
-    self->run = 1;
+    printf("XCBWindow { \"%s\", (%u, %u) }\n", name, width, height);
     return 1;
 }
 
-int Screen_WindowLinux_Destroy(WindowLinux *self)
+int XCBWindow_destroy(XCBWindow *self)
 {
+    printf("XCBWindow { destroy }\n");
     xcb_destroy_window(self->connect, self->win);
+    xcb_disconnect(self->connect);
     return 1;
 }
