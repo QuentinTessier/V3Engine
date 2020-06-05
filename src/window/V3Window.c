@@ -26,6 +26,10 @@ V3Window *V3Window_allocate()
 int V3Window_create(V3Window *self, char const *name, unsigned int width, unsigned int height)
 {
     self->run = 1;
+    self->size[0] = width;
+    self->size[1] = height;
+    self->position[0] = 0;
+    self->position[1] = 0;
     #ifdef __linux__
         return XCBWindow_create((XCBWindow *)self, name, width, height);
     #endif
@@ -51,4 +55,12 @@ int V3Window_close(V3Window *self)
 {
     self->run = 0;
     return 1;
+}
+
+void V3Window_pollEvent(V3Window *self, V3Event *event)
+{
+    #ifdef __linux__
+        XCBWindow_pollEvent((XCBWindow *)self, event);
+    #endif
+    return;
 }

@@ -8,3 +8,4 @@ add_executable(V3Engine
 )
 
 target_link_libraries(V3Engine PRIVATE -lxcb)
+target_link_libraries(V3Engine PRIVATE -lxkbcommon)
