@@ -5,6 +5,7 @@
 ** window_linux
 */
 
+#include <stdlib.h>
 #include <string.h>
 #include "window.h"
 
@@ -49,8 +50,6 @@ int Screen_WindowLinux_Create(WindowLinux *self, char const *name, int width, in
         8,
         strlen(name),
         name);
-    xcb_map_window(self->connect, self->win);
-    xcb_flush(self->connect);
     xcb_intern_atom_cookie_t wmProtocolsCookie = xcb_intern_atom(self->connect, 1, 12, "WM_PROTOCOLS");
     xcb_intern_atom_reply_t *wmProtocolsReply = xcb_intern_atom_reply(self->connect, wmProtocolsCookie, 0);
 
@@ -61,6 +60,10 @@ int Screen_WindowLinux_Create(WindowLinux *self, char const *name, int width, in
     self->wmProtocols = wmProtocolsReply->atom;
     xcb_change_property(self->connect, XCB_PROP_MODE_REPLACE, self->win,
         wmProtocolsReply->atom, 4, 32, 1, &wmDeleteReply->atom);
+    free(wmDeleteReply);
+    free(wmProtocolsReply);
+    xcb_map_window(self->connect, self->win);
+    xcb_flush(self->connect);
     self->run = 1;
     return 1;
 }
