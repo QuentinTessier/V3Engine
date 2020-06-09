@@ -52,6 +52,32 @@ static const unsigned char EVDEV_TO_HID[256] = {
   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0
 };
 
+/**
+ * @brief Create and initialize the window (with XCB functions)
+ *
+ * @param self - The XCBWindow pointer
+ * @param name - The name of the V3Window
+ * @param width - The width of the V3Window
+ * @param height - The height of the V3Window
+ *
+ * @return Returns a boolean, true = success, false = failure
+ */
 int XCBWindow_create(XCBWindow *self, char const *name, unsigned int width, unsigned int height);
+
+/**
+ * @brief Destroy the XCBWindow
+ *
+ * @param self - The XCBWindow pointer
+ *
+ * @return Returns 1
+ */
 int XCBWindow_destroy(XCBWindow *self);
+
+/**
+ * @brief Poll the lastest event (doesn't block)
+ *
+ * @param self - The XCBWindow pointer
+ * @param event - Pointer to a V3Event which the function will fill with data
+ *
+ */
 void XCBWindow_pollEvent(XCBWindow *self, V3Event *v3_event);

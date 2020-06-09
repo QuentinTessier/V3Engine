@@ -43,6 +43,32 @@ static const unsigned char WIN32_TO_HID[256] = {
       0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0     //256
 };
 
+/**
+ * @brief Create and initialize the window (with Win32 functions)
+ *
+ * @param self - The Win32Window pointer
+ * @param name - The name of the V3Window
+ * @param width - The width of the V3Window
+ * @param height - The height of the V3Window
+ *
+ * @return Returns a boolean, true = success, false = failure
+ */
 int Win32Window_create(Win32Window *self, char const *name, unsigned int width, unsigned int height);
+
+/**
+ * @brief Destroy the Win32Window
+ *
+ * @param self - The Win32Window pointer
+ *
+ * @return Returns 1
+ */
 int Win32Window_destroy(Win32Window *self);
+
+/**
+ * @brief Poll the lastest event (doesn't block)
+ *
+ * @param self - The Win32Window pointer
+ * @param event - Pointer to a V3Event which the function will fill with data
+ *
+ */
 void Win32Window_pollEvent(Win32Window *self, V3Event *v3_event);

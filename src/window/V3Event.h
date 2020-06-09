@@ -25,6 +25,9 @@ enum V3EventTypes {
     V3EVENT_MOVE,
 };
 
+/**
+ * @brief Stores an event in a cross-plaform way
+ */
 struct event {
     int type;
     union {
