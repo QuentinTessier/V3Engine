@@ -112,7 +112,7 @@ static void XCBWindow_convertEvent(XCBWindow *self, xcb_generic_event_t *xcb_eve
             break;
 
         case XCB_BUTTON_RELEASE:
-            v3_event->type = V3EVENT_MOUSE_BUTTON_PRESSED;
+            v3_event->type = V3EVENT_MOUSE_BUTTON_RELEASED;
             v3_event->mouseButton.id = e->detail;
             v3_event->mouseButton.pos[0] = e->event_x;
             v3_event->mouseButton.pos[1] = e->event_y;
