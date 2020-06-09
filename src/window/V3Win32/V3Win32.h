@@ -67,7 +67,7 @@ int Win32Window_destroy(Win32Window *self);
 /**
  * @brief Poll the lastest event (doesn't block)
  *
- * @param self - The Win32Window pointer
+ * @param self - The Win325Window pointer
  * @param event - Pointer to a V3Event which the function will fill with data
  *
  */
