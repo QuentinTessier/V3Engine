@@ -22,7 +22,7 @@ static LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
     return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
-int Win32Window_create(Win32Window *self, char const *name, unsigned int width, unsigned int height)
+int Win32Window_create(Win32Window *self, char const *name, u32 width, u32 height)
 {
     self->hInstance = GetModuleHandle(0);
 

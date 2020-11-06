@@ -1,6 +1,5 @@
 #pragma once
 
-#include <stdint.h>
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <windowsx.h>
@@ -24,7 +23,7 @@ struct win32_window {
 
 // From : https://github.com/renelindsay/Vulkan-WSIWindow
 // Convert native Win32 keyboard scancode to cross-platform USB HID code.
-static const unsigned char WIN32_TO_HID[256] = {
+static const u8 WIN32_TO_HID[256] = {
       0,  0,  0,  0,  0,  0,  0,  0, 42, 43,  0,  0,  0, 40,  0,  0,    // 16
     225,224,226, 72, 57,  0,  0,  0,  0,  0,  0, 41,  0,  0,  0,  0,    // 32
      44, 75, 78, 77, 74, 80, 82, 79, 81,  0,  0,  0, 70, 73, 76,  0,    // 48
@@ -53,7 +52,7 @@ static const unsigned char WIN32_TO_HID[256] = {
  *
  * @return Returns a boolean, true = success, false = failure
  */
-int Win32Window_create(Win32Window *self, char const *name, unsigned int width, unsigned int height);
+int Win32Window_create(Win32Window *self, char const *name, u32 width, u32 height);
 
 /**
  * @brief Destroy the Win32Window
@@ -67,7 +66,7 @@ int Win32Window_destroy(Win32Window *self);
 /**
  * @brief Poll the lastest event (doesn't block)
  *
- * @param self - The Win325Window pointer
+ * @param self - The Win32Window pointer
  * @param event - Pointer to a V3Event which the function will fill with data
  *
  */

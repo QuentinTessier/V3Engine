@@ -1,5 +1,6 @@
 #pragma once
 
+#include "maths/vector.h"
 #include "V3Event.h"
 
 typedef struct window V3Window;
@@ -9,8 +10,8 @@ typedef struct window V3Window;
  */
 struct window {
     int run;
-    uint32_t size[2];
-    uint32_t position[2];
+    vec_i32 size;
+    vec_i32 position;
 };
 
 /**
@@ -30,7 +31,7 @@ V3Window *V3Window_allocate();
  *
  * @return Returns a boolean, true = success, false = failure
  */
-int V3Window_create(V3Window *self, char const *name, unsigned int width, unsigned int height);
+int V3Window_create(V3Window *self, char const *name, u32 width, u32 height);
 
 /**
  * @brief Destroy the V3Window

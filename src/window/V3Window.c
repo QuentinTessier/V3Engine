@@ -25,22 +25,20 @@ V3Window *V3Window_allocate()
         printf("V3Window_allocate( XCBWindow )\n");
         return malloc(sizeof(XCBWindow));
     #elif __WIN32
-        printf("V3Window_allocate( XCBWindow )\n");
+        printf("V3Window_allocate( Win32Window )\n");
         return malloc(sizeof(Win32Window));
     #endif
     printf("No implementation\n");
     return 0;
 }
 
-int V3Window_create(V3Window *self, char const *name, unsigned int width, unsigned int height)
+int V3Window_create(V3Window *self, char const *name, u32 width, u32 height)
 {
     if (self == 0)
         return 0;
     self->run = 1;
-    self->size[0] = width;
-    self->size[1] = height;
-    self->position[0] = 0;
-    self->position[1] = 0;
+    self->size = vec_i32_(width, height);
+    self->position = vec_i32_(0, 0);
     #ifdef __linux__
         return XCBWindow_create((XCBWindow *)self, name, width, height);
     #elif __WIN32

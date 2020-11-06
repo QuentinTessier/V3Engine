@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <stdint.h>
+#include <maths/types.h>
 
 typedef struct event V3Event;
 
@@ -37,7 +37,7 @@ struct event {
             uint32_t id;
             uint32_t pos[2];
         } mouseButton;              // V3EVENT_MOUSE_BUTTON_{PRESSED / RELEASED}
-        uint8_t asFocus;            // V3EVENT_FOCUS
-        uint32_t vec[2];           // V3EVENT_{RESIZE / MOVE / MOUSE_MOVE}
+        i8 asFocus;            // V3EVENT_FOCUS
+        i32 vec[2];           // V3EVENT_{RESIZE / MOVE / MOUSE_MOVE}
     };
 };

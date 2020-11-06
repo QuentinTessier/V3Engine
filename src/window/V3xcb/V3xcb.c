@@ -10,7 +10,7 @@
 #include <string.h>
 #include "V3xcb.h"
 
-int XCBWindow_create(XCBWindow *self, char const *name, unsigned int width, unsigned int height)
+int XCBWindow_create(XCBWindow *self, char const *name, u32 width, u32 height)
 {
     int screen_nbr = 0;
     uint32_t EventMask = XCB_CW_BACK_PIXEL | XCB_CW_EVENT_MASK;

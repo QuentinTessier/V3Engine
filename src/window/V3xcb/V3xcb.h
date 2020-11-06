@@ -7,7 +7,6 @@
 
 #pragma once
 
-#include <stdint.h>
 #include <xcb/xcb.h>
 #include <xkbcommon/xkbcommon.h>
 #include "../V3Window.h"
@@ -62,7 +61,7 @@ static const unsigned char EVDEV_TO_HID[256] = {
  *
  * @return Returns a boolean, true = success, false = failure
  */
-int XCBWindow_create(XCBWindow *self, char const *name, unsigned int width, unsigned int height);
+int XCBWindow_create(XCBWindow *self, char const *name, u32 width, u32 height);
 
 /**
  * @brief Destroy the XCBWindow
